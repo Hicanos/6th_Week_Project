@@ -6,19 +6,19 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
-    public float moveSpeed;
-    public float jumpPower;
-    private Vector2 curMovementInput;
-    private Rigidbody rb;
+    public float moveSpeed; // 움직이는 스피드
+    public float jumpPower; // 점프하는 힘
+    private Vector2 curMovementInput; // 현재 움직이는 방향과 힘을 저장하는 변수
+    private Rigidbody rb; // Rigidbody 컴포넌트를 저장
 
 
     [Header("Look")]
-    public Transform cameraContainer;
-    public float minXLook;
-    public float maxXLook;
-    private float camCurXRot;
-    public float lookSensitivity;
-    private Vector2 mouseDelta;
+    public Transform cameraContainer; // 카메라를 담고 있는 컨테이너
+    public float minXLook; // 카메라의 최소 X축 회전값
+    public float maxXLook; // 카메라의 최대 X축 회전값
+    private float camCurXRot; // 카메라의 현재 X축 회전값
+    public float lookSensitivity; // 카메라 회전 민감도
+    private Vector2 mouseDelta; // 마우스 이동값
 
 
     private bool isRightMouseDown = false; //오른쪽 마우스 버튼을 눌렀는지 확인하는 변수
