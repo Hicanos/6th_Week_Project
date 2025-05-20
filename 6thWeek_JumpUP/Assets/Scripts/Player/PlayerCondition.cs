@@ -8,7 +8,7 @@ public class PlayerCondition : MonoBehaviour
     Condition health { get { return uiCondition.health; } }
     Condition stamina { get { return uiCondition.stamina; } }
 
-    public event Action onTakeDamage;
+    public event Action onTakeDamage; // 대미지 입었을 때 호출되는 이벤트
 
     private void Update()
     {
