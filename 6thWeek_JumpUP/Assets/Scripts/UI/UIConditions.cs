@@ -1,18 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UIConditions : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Condition health;
+    public Condition stamina;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        // 디버그용 메세지
+        if (CharacterManager.Instance == null)
+        {
+            Debug.LogError("CharacterManager.Instance가 null입니다.");
+            return;
+        }
+        if (CharacterManager.Instance.Player == null)
+        {
+            Debug.LogError("CharacterManager.Instance.Player가 null입니다.");
+            return;
+        }
+        if (CharacterManager.Instance.Player.condition == null)
+        {
+            Debug.LogError("Player.condition이 null입니다.");
+            return;
+        }
+
+        CharacterManager.Instance.Player.condition.uiCondition = this;
     }
 }

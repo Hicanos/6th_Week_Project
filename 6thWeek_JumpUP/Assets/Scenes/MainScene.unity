@@ -402,7 +402,7 @@ GameObject:
   - component: {fileID: 276971119}
   - component: {fileID: 276971118}
   m_Layer: 5
-  m_Name: Image
+  m_Name: HPBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -475,7 +475,6 @@ GameObject:
   m_Component:
   - component: {fileID: 313690617}
   - component: {fileID: 313690619}
-  - component: {fileID: 313690618}
   m_Layer: 6
   m_Name: EquipCamera
   m_TagString: Untagged
@@ -498,14 +497,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 253441493}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &313690618
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 313690616}
-  m_Enabled: 1
 --- !u!20 &313690619
 Camera:
   m_ObjectHideFlags: 0
@@ -568,6 +559,7 @@ GameObject:
   - component: {fileID: 605104208}
   - component: {fileID: 605104210}
   - component: {fileID: 605104209}
+  - component: {fileID: 605104211}
   m_Layer: 5
   m_Name: Stemina
   m_TagString: Untagged
@@ -634,6 +626,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 605104207}
   m_CullTransparentMesh: 1
+--- !u!114 &605104211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605104207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9de5946194db4a4f88b91376ef2423a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curValue: 0
+  maxValue: 100
+  startValue: 50
+  passiveValue: 10
+  uiBar: {fileID: 1542545786}
 --- !u!1 &661184962
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,6 +983,7 @@ GameObject:
   - component: {fileID: 1080164466}
   - component: {fileID: 1080164468}
   - component: {fileID: 1080164467}
+  - component: {fileID: 1080164469}
   m_Layer: 5
   m_Name: Health
   m_TagString: Untagged
@@ -1040,6 +1050,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1080164465}
   m_CullTransparentMesh: 1
+--- !u!114 &1080164469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080164465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9de5946194db4a4f88b91376ef2423a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curValue: 0
+  maxValue: 100
+  startValue: 50
+  passiveValue: 10
+  uiBar: {fileID: 276971118}
 --- !u!1 &1231104652
 GameObject:
   m_ObjectHideFlags: 0
@@ -1056,6 +1083,7 @@ GameObject:
   - component: {fileID: 1231104658}
   - component: {fileID: 1231104660}
   - component: {fileID: 1231104659}
+  - component: {fileID: 1231104661}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -1306,6 +1334,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
+  condition: {fileID: 0}
+--- !u!114 &1231104661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231104652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8b4a1bc0a4570c42a49a60f57a6ff8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiCondition: {fileID: 1830558565}
 --- !u!1 &1542545784
 GameObject:
   m_ObjectHideFlags: 0
@@ -1318,7 +1360,7 @@ GameObject:
   - component: {fileID: 1542545787}
   - component: {fileID: 1542545786}
   m_Layer: 5
-  m_Name: Image
+  m_Name: SteminaBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1356,7 +1398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.8715594, b: 0, a: 1}
+  m_Color: {r: 0.6666667, g: 1, b: 0.41960788, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1391,6 +1433,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1830558563}
   - component: {fileID: 1830558564}
+  - component: {fileID: 1830558565}
   m_Layer: 5
   m_Name: Conditions
   m_TagString: Untagged
@@ -1445,6 +1488,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1830558565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830558562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77182a1123a90c8469f3360c850422ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 1080164469}
+  stamina: {fileID: 605104211}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
