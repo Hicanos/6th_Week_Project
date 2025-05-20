@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float jumpPower; // 점프하는 힘
     private Vector2 curMovementInput; // 현재 움직이는 방향과 힘을 저장하는 변수
     private Rigidbody rb; // Rigidbody 컴포넌트를 저장
+    public LayerMask groundLayerMask; // 바닥 레이어 마스크
 
 
     [Header("Look")]

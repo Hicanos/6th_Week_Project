@@ -28,8 +28,12 @@ public class PlayerCondition : MonoBehaviour
         health.Add(amount);
     }
 
-    public void Die()
+    public void Die() //캐릭터 사망시 작동하는 로직
     {
+        // 캐릭터 사망 시 화면에 메세지 출력, Restart 혹은 Exit 버튼을 눌러야 함
+        // Restart 버튼을 누르면 게임이 다시 시작됨
+        // Exit 버튼을 누르면 게임이 종료됨
+        // UI매니저에서 UI를 활성화 시키고 게임매니저에서 게임 종료
         Debug.Log("플레이어가 죽었다.");
     }
 }

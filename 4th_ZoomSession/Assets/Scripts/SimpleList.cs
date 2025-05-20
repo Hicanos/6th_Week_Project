@@ -53,7 +53,7 @@ public class SimpleList<T>
     /// 리스트에서 요소를 제거
     /// </summary>
     /// <param name="valueToRemove"></param>
-    void Remove(T value)
+    public void Remove(T value)
     {
         //해당요소가 리스트에 없으면 바로 종료
         //있으면 요소를 제거하고 뒷칸부터 앞으로 당겨옴
@@ -65,17 +65,31 @@ public class SimpleList<T>
         }
         //리스트에 요소가 있으면
         //해당 요소를 제거하고 뒷칸부터 앞으로 당겨옴
-        else
+
+        for (int i = index; i < _lastIdx - 1; i++)
         {
-            for (int i = index; i < Count - 1; i++)
-            {
-                _array[i] = _array[i + 1]; //앞으로 당겨옴
-            }
-            _lastIdx--; //마지막 인덱스 -1
+            _array[i] = _array[i + 1]; //앞으로 당겨옴
         }
+        _array[_lastIdx - 1] = default; //마지막 인덱스에 default값 저장
+        _lastIdx--; //마지막 인덱스 -1
+
 
 
     }
+
+    /// <summary>
+    /// 리스트에 요소가 있는지 확인 후 반환
+    /// </summary>
+    /// <param name="value">포함되어있는지 찾고자 하는 값</param>
+    /// <returns></returns>
+    public bool Contains(T value)
+    {
+        //리스트에 요소가 있는지 확인
+        //있으면 true, 없으면 false 반환
+        return TryGetValue(value, out int _dex);
+    }
+
+
 
     /// <summary>
     /// 리스트에서 요소를 찾고 인덱스를 반환
