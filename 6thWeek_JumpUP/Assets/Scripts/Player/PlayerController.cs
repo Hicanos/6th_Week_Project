@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     public float lookSensitivity; // 카메라 회전 민감도
     private Vector2 mouseDelta; // 마우스 이동값
 
+    [HideInInspector]
+    public bool canLook = true;
+
 
     private bool isRightMouseDown = false; //오른쪽 마우스 버튼을 눌렀는지 확인하는 변수
 
@@ -39,7 +42,11 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        CameraLook();
+        if (canLook)
+        {
+            CameraLook();
+        }
+            
     }
 
     private void Move()
@@ -104,8 +111,59 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        Debug.Log("점프");
-        rb.AddForce(Vector2.up * jumpPower, ForceMode.Impulse); //순간적으로 점프에 힘을 줌
-
+        if(context.phase == InputActionPhase.Started && IsGrounded()==true)
+        {
+            rb.AddForce(Vector2.up * jumpPower, ForceMode.Impulse); //순간적으로 점프에 힘을 줌
+            Debug.Log("점프");
+        }
+        //점프 버튼을 눌렀을 때, IsGrounded()가 true이면 점프
+        else Debug.Log("점프 불가");
     }
+
+    bool IsGrounded() //true이면 바닥에 닿아있음, false면 바닥에 닿아있지 않음
+    {
+        //바닥에 닿아있는지 확인
+        // 4개의 Ray를 저장하는 배열
+        Ray[] rays = new Ray[4]
+        {
+            // 플레이어의 위치에서 앞, 뒤, 오른쪽, 왼쪽으로 0.2f 떨어진 위치에 Ray를 쏘고, 아래 방향으로 쏘기
+            // 이유: 한 방향에서만 Ray를 쏘면, 바닥이 경사이거나 모서리에 있을 때, 바닥에 닿지 않는 경우가 발생할 수 있음
+            //순서대로 앞(+transform.forward), 뒤(-transform.forward),오른쪽(+transform.right), 왼쪽(-transform.right)
+            
+            //1번 Ray: 오브젝트의 중앙위치에서 약간 앞쪽, 아주 약간 위로 이동한 위치에서 아래로 Ray를 쏘기
+            new Ray(transform.position + (transform.forward * 0.2f) + (transform.up * 0.01f), Vector3.down),
+            //2번 Ray: 오브젝트의 중앙위치에서 약간 뒤쪽, 아주 약간 위로 이동한 위치에서 아래로 Ray를 쏘기
+            new Ray(transform.position + (-transform.forward * 0.2f) + (transform.up * 0.01f), Vector3.down),
+            //3번 Ray: 오브젝트의 중앙위치에서 약간 오른쪽, 아주 약간 위로 이동한 위치에서 아래로 Ray를 쏘기
+            new Ray(transform.position + (transform.right * 0.2f) + (transform.up * 0.01f), Vector3.down),
+            //4번 Ray: 오브젝트의 중앙위치에서 약간 왼쪽, 아주 약간 위로 이동한 위치에서 아래로 Ray를 쏘기
+            new Ray(transform.position + (-transform.right * 0.2f) +(transform.up * 0.01f), Vector3.down)
+        };
+
+        // 각 Ray에 대해 바닥 레이어와 충돌하는지 확인
+        for (int i = 0; i < rays.Length; i++)
+        {
+            // Ray를 시각적으로 확인하기 위해 Debug.DrawRay 사용
+            Debug.DrawRay(rays[i].origin, rays[i].direction * 0.1f, Color.red, 0.1f);
+
+            //Physics.Raycast를 사용하여 Ray가 바닥 레이어와 충돌하는지 확인
+            //rays[i]: 발사할 Ray(위에서 정의한 Ray를 차례대로 사용)
+            //0.1f: Ray의 길이(0.1f만큼 아래로 쏘아 무언가와 충돌했는지 확인)
+            //groundLayerMask: 바닥 레이어 마스크(Raycast가 감지할 바닥 레이어)
+            if (Physics.Raycast(rays[i], 0.6f, groundLayerMask))
+            {
+                Debug.Log("바닥에 닿아있음");
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // 마우스 커서를 보이거나 보이지 않게 함
+    public void ToggleCursor(bool toggle)
+    {
+        Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
+        canLook = !toggle;
+    }
+
 }
