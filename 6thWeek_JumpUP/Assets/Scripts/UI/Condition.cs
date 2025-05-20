@@ -31,10 +31,12 @@ public class Condition : MonoBehaviour
     public void Subtract(float amount)
     {
         curValue = Mathf.Max(curValue - amount, 0.0f);
+        // max를 이용해 둘 중 더 큰 값을 선택 (수치가 0보다 작아지지 않도록)
     }
 
     public float GetPercentage()
     {
         return curValue / maxValue;
+        // 현재 수치와 최대 수치의 비율을 반환, maxValue는 항상 curValue보다 크거나 같음
     }
 }
