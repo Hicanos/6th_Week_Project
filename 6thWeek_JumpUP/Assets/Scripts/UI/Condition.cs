@@ -3,9 +3,13 @@ using UnityEngine.UI;
 
 public class Condition : MonoBehaviour
 {
+    // 캐릭터의 상태를 나타내는 클래스
+    // 최대수치, 시작값: 여기서만 설정되므로 private
+    // 현재 수치, 기본적으로 변화하는 값: PlayerCondition에서 접근 가능
+
+    [SerializeField] private float maxValue; //최대 수치
+    [SerializeField] private float startValue; // 시작할 때의 값
     public float curValue; //현재 수치
-    public float maxValue; //최대 수치
-    public float startValue; // 시작할 때의 값
     public float passiveValue; // 기본적으로 변화하는 값
     public Image uiBar; // Image로 변환되는 수치를 담을 UI바
 

@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 71662352}
   - component: {fileID: 71662351}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: UICanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -487,7 +487,7 @@ MonoBehaviour:
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 0
+  m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -674,9 +674,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9de5946194db4a4f88b91376ef2423a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curValue: 0
   maxValue: 100
-  startValue: 50
+  startValue: 100
+  curValue: 0
   passiveValue: 10
   uiBar: {fileID: 1542545786}
 --- !u!1 &661184962
@@ -1098,9 +1098,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9de5946194db4a4f88b91376ef2423a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curValue: 0
   maxValue: 100
-  startValue: 50
+  startValue: 100
+  curValue: 0
   passiveValue: 10
   uiBar: {fileID: 276971118}
 --- !u!1 &1231104652

@@ -115,6 +115,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(Vector2.up * jumpPower, ForceMode.Impulse); //순간적으로 점프에 힘을 줌
             Debug.Log("점프");
+            //점프하면 스태미너 소모
         }
         //점프 버튼을 눌렀을 때, IsGrounded()가 true이면 점프
         else Debug.Log("점프 불가");
@@ -144,11 +145,11 @@ public class PlayerController : MonoBehaviour
         for (int i = 0; i < rays.Length; i++)
         {
             // Ray를 시각적으로 확인하기 위해 Debug.DrawRay 사용
-            Debug.DrawRay(rays[i].origin, rays[i].direction * 0.1f, Color.red, 0.1f);
+            Debug.DrawRay(rays[i].origin, rays[i].direction * 0.6f, Color.red);
 
             //Physics.Raycast를 사용하여 Ray가 바닥 레이어와 충돌하는지 확인
             //rays[i]: 발사할 Ray(위에서 정의한 Ray를 차례대로 사용)
-            //0.1f: Ray의 길이(0.1f만큼 아래로 쏘아 무언가와 충돌했는지 확인)
+            //0.6f: Ray의 길이(0.6f만큼 아래로 쏘아 무언가와 충돌했는지 확인)
             //groundLayerMask: 바닥 레이어 마스크(Raycast가 감지할 바닥 레이어)
             if (Physics.Raycast(rays[i], 0.6f, groundLayerMask))
             {

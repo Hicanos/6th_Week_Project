@@ -8,7 +8,11 @@ public class PlayerCondition : MonoBehaviour
     Condition health { get { return uiCondition.health; } }
     Condition stamina { get { return uiCondition.stamina; } }
 
-    public event Action onTakeDamage; // 대미지 입었을 때 호출되는 이벤트
+    //public event Action onTakeDamage; // 대미지 입었을 때 호출되는 이벤트
+    //public event Action onStaminaChange; // 스태미너 변화 시 호출되는 이벤트
+    // 체력: 높은 곳에서 떨어졌을 때 소모됨 : 낙차계산 필요
+    // 스태미나: 대쉬, 점프 등으로 소모됨
+    
 
     private void Update()
     {
