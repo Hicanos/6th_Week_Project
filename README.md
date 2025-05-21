@@ -5,9 +5,17 @@
 
 - 기본 이동 및 점프 Input System, Rigidbody ForceMode(완료)
 - 체력바 UI (완료) - 전부 끝나면 낙하대미지 구현 예정
-- 동적 환경 조사 Raycast UI (미완) - 구현 예정
-- 점프대 Rigidbody ForceMode (미완) - 구현 예정
+  
+[이동과점프](https://github.com/user-attachments/assets/ff9a429d-3ab6-435f-aee3-9e558145761b)
+
 - 아이템 데이터 ScriptableObject (완료)
+- 동적 환경 조사 Raycast UI (완료)
+
+[아이템 데이터 확인](https://github.com/user-attachments/assets/af4f1f31-5e82-4bf6-a0b2-7d566c068cca)
+
+
+  
+- 점프대 Rigidbody ForceMode (미완) - 구현 예정
 - 아이템 사용 Coroutine (미완) - 구현 예정
 
 
