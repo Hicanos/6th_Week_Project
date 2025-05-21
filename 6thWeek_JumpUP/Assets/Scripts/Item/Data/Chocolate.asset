@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f67df48d53668784d981f67398576c89, type: 3}
   m_Name: Chocolate
   m_EditorClassIdentifier: 
+  id: 2
   displayName: "\uCD08\uCF5C\uB81B"
   description: "\uB2EC\uCF64\uD55C \uCD08\uCF5C\uB9BF. \uD798\uC744 \uB0B4\uB294\uB370\uB294
     \uC774\uB9CC\uD55C \uAC8C \uC5C6\uB2E4."
@@ -26,3 +27,6 @@ MonoBehaviour:
     duration: 0
     isCooldown: 1
     cooldownTime: 3
+  consumables: []
+  equipPrefab: {fileID: 0}
+  dropPrefab: {fileID: 3365767448341484016, guid: 97b5ea74375d13d4ba4dba69e012ab8d, type: 3}

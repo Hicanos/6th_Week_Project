@@ -90,8 +90,9 @@ public class UIInventory : MonoBehaviour
 
     public void AddItem()
     {
-        ItemData data = CharacterManager.Instance.Player.itemData;
+        ItemData data = CharacterManager.Instance.Player.itemData; // 플레이어가 획득한 아이템 데이터
 
+        //아이템이 스택이 가능한 경우
         if (data.canStack)
         {
             ItemSlot slot = GetItemStack(data);
@@ -106,6 +107,7 @@ public class UIInventory : MonoBehaviour
 
         ItemSlot emptySlot = GetEmptySlot();
 
+
         if (emptySlot != null)
         {
             emptySlot.item = data;
@@ -119,6 +121,7 @@ public class UIInventory : MonoBehaviour
         CharacterManager.Instance.Player.itemData = null;
     }
 
+    //아이템 슬롯 UI 업데이트
     public void UpdateUI()
     {
         for (int i = 0; i < slots.Length; i++)
@@ -181,6 +184,7 @@ public class UIInventory : MonoBehaviour
 
         for (int i = 0; i < selectedItem.item.consumables.Length; i++)
         {
+            var consumable = selectedItem.item.consumables[i];
             //UI에 표시되는 소모 아이템의 회복시키는 스탯의 종류와 수치
             selectedItemStatName.text += selectedItem.item.consumables[i].consumeType.ToString() + "\n";
             selectedItemStatValue.text += selectedItem.item.consumables[i].value.ToString() + "\n";

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f67df48d53668784d981f67398576c89, type: 3}
   m_Name: Log
   m_EditorClassIdentifier: 
+  id: 101
   displayName: "\uD1B5\uB098\uBB34"
   description: "\uC5B8\uC820\uAC00 \uBB34\uC5B8\uAC00\uB97C \uB9CC\uB4DC\uB294 \uB370
     \uC4F8 \uC218 \uC788\uC744 \uAC83 \uAC19\uB2E4."
@@ -26,3 +27,6 @@ MonoBehaviour:
     duration: 0
     isCooldown: 0
     cooldownTime: 0
+  consumables: []
+  equipPrefab: {fileID: 0}
+  dropPrefab: {fileID: 8586051982373029114, guid: 922786c7c0f340e4fb25c7e4c70d51ca, type: 3}

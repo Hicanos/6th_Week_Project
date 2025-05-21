@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed; // 움직이는 스피드
     public float jumpPower; // 점프하는 힘
+    public float jumpStamina; // 점프하는 힘을 위한 스태미너
     private Vector2 curMovementInput; // 현재 움직이는 방향과 힘을 저장하는 변수
     private Rigidbody rb; // Rigidbody 컴포넌트를 저장
     public LayerMask groundLayerMask; // 바닥 레이어 마스크
@@ -25,10 +26,13 @@ public class PlayerController : MonoBehaviour
     public Action inventory; // 인벤토리 열기 이벤트
 
     private bool isRightMouseDown = false; //오른쪽 마우스 버튼을 눌렀는지 확인하는 변수
+    PlayerCondition condition; // 플레이어 상태를 저장하는 변수
+
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        condition = GetComponent<PlayerCondition>();
     }
 
     private void Start()
@@ -112,17 +116,28 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Started && IsGrounded()==true)
+               
+        //stamina가 점프에 필요한 양보다 많을 때만 점프 가능
+        if (condition.stamina.curValue < jumpStamina)
+        {
+            Debug.Log("스태미너 부족");
+            return;
+        }
+
+        if (context.phase == InputActionPhase.Started && IsGrounded()==true)
         {
             rb.AddForce(Vector2.up * jumpPower, ForceMode.Impulse); //순간적으로 점프에 힘을 줌
             Debug.Log("점프");
             //점프하면 스태미너 소모
+            
+            condition.BeTired(jumpStamina);
+            //onStaminaChange?.Invoke(jumpStamina.curValue);
         }
         //점프 버튼을 눌렀을 때, IsGrounded()가 true이면 점프
         else Debug.Log("점프 불가");
     }
 
-    bool IsGrounded() //true이면 바닥에 닿아있음, false면 바닥에 닿아있지 않음
+    public bool IsGrounded() //true이면 바닥에 닿아있음, false면 바닥에 닿아있지 않음
     {
         //바닥에 닿아있는지 확인
         // 4개의 Ray를 저장하는 배열

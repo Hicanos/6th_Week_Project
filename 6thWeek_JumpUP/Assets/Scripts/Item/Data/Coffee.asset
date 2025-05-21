@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f67df48d53668784d981f67398576c89, type: 3}
   m_Name: Coffee
   m_EditorClassIdentifier: 
+  id: 3
   displayName: "\uCEE4\uD53C"
   description: "\uC7A0\uC744 \uAE68\uC6CC\uC8FC\uB294 \uC74C\uB8CC. \uBAB8\uC5D0
     \uD65C\uB825\uC744 \uC900\uB2E4."
@@ -28,4 +29,4 @@ MonoBehaviour:
     cooldownTime: 30
   consumables: []
   equipPrefab: {fileID: 0}
-  dropPrefab: {fileID: 0}
+  dropPrefab: {fileID: 8749868489605066555, guid: 306d63efbf62c8242ae6444481972461, type: 3}
