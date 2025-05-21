@@ -18,6 +18,13 @@
 - 점프대 Rigidbody ForceMode (미완) - 구현 예정
 - 아이템 사용 Coroutine (미완) - 구현 예정
 
+## 트러블
+https://github.com/user-attachments/assets/51c2ae48-1331-4655-b578-5dd53430ecac
+
+> 아이템 습득은 가능하지만(UI에 이미지 반영까지 됨) 아이템이 선택되지 않는 상황
+> SelectItem() 메서드가 제대로 동작하지 않는 것으로 추정됨
+
+
 
 ## Commit Convention
 > Add:
