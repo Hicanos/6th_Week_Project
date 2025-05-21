@@ -132,13 +132,13 @@ public class PlayerController : MonoBehaviour
             //순서대로 앞(+transform.forward), 뒤(-transform.forward),오른쪽(+transform.right), 왼쪽(-transform.right)
             
             //1번 Ray: 오브젝트의 중앙위치에서 약간 앞쪽, 아주 약간 위로 이동한 위치에서 아래로 Ray를 쏘기
-            new Ray(transform.position + (transform.forward * 0.2f) + (transform.up * 0.01f), Vector3.down),
+            new(transform.position + (transform.forward * 0.2f) + (transform.up * 0.01f), Vector3.down),
             //2번 Ray: 오브젝트의 중앙위치에서 약간 뒤쪽, 아주 약간 위로 이동한 위치에서 아래로 Ray를 쏘기
-            new Ray(transform.position + (-transform.forward * 0.2f) + (transform.up * 0.01f), Vector3.down),
+            new(transform.position + (-transform.forward * 0.2f) + (transform.up * 0.01f), Vector3.down),
             //3번 Ray: 오브젝트의 중앙위치에서 약간 오른쪽, 아주 약간 위로 이동한 위치에서 아래로 Ray를 쏘기
-            new Ray(transform.position + (transform.right * 0.2f) + (transform.up * 0.01f), Vector3.down),
+            new(transform.position + (transform.right * 0.2f) + (transform.up * 0.01f), Vector3.down),
             //4번 Ray: 오브젝트의 중앙위치에서 약간 왼쪽, 아주 약간 위로 이동한 위치에서 아래로 Ray를 쏘기
-            new Ray(transform.position + (-transform.right * 0.2f) +(transform.up * 0.01f), Vector3.down)
+            new(transform.position + (-transform.right * 0.2f) +(transform.up * 0.01f), Vector3.down)
         };
 
         // 각 Ray에 대해 바닥 레이어와 충돌하는지 확인
