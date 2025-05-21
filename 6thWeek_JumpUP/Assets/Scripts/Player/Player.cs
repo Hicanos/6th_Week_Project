@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 
     public ItemData itemData; // 플레이어가 소지한 아이템 데이터
     public Action addItem; // 아이템 획득 이벤트
+    public Transform dropPosition; // 아이템 드랍 위치를 저장하는 변수
 
     private void Awake()
     {
@@ -15,4 +16,5 @@ public class Player : MonoBehaviour
         controller = GetComponent<PlayerController>(); // 플레이어 컨트롤러를 가져옴
         condition = GetComponent<PlayerCondition>(); // 플레이어 상태를 가져옴
     }
+
 }

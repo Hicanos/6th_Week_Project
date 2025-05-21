@@ -360,3 +360,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c301de7564446c43aa3cd1165796c7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 0}
+  inventory: {fileID: 0}
+  button: {fileID: 0}
+  icon: {fileID: 1575986070728207464}
+  quatityText: {fileID: 6056875251795760601}
+  index: 0
+  equipped: 0
+  quantity: 0

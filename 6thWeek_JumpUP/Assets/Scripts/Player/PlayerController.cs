@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector]
     public bool canLook = true;
-
+    public Action inventory; // 인벤토리 열기 이벤트
 
     private bool isRightMouseDown = false; //오른쪽 마우스 버튼을 눌렀는지 확인하는 변수
 
@@ -160,11 +161,24 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
-    // 마우스 커서를 보이거나 보이지 않게 함
-    public void ToggleCursor(bool toggle)
+
+    //인벤토리 열기 버튼을 누르면 호출
+    public void OnInventoryButton(InputAction.CallbackContext callbackContext)
     {
+        if (callbackContext.phase == InputActionPhase.Started)
+        {
+            inventory?.Invoke();
+            ToggleCursor();
+        }
+    }
+
+    // 마우스 커서를 보이거나 보이지 않게 함
+    void ToggleCursor()
+    {
+        bool toggle = Cursor.lockState == CursorLockMode.Locked;
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
         canLook = !toggle;
     }
+
 
 }

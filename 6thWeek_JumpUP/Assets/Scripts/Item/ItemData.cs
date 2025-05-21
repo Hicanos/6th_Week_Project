@@ -49,6 +49,7 @@ public class ItemDataConsumable
 public class ItemData : ScriptableObject
 {
     [Header("Item Info")]
+    public int id; // 아이템 ID
     public string displayName; // 아이템 이름
     public string description; // 아이템 설명
     public ItemType itemType; // 아이템 종류
@@ -67,5 +68,15 @@ public class ItemData : ScriptableObject
     public bool IsConsumable => itemType == ItemType.Consumable;
     //Consumable 타입일 때만 consumableData 사용
     public ItemDataConsumable GetConsumableData() => IsConsumable ? consumableData : null;
+
+    //소비 아이템 종류
+    public ItemDataConsumable[] consumables;
+
+
+
+    [Header("Equip")]
+    public GameObject equipPrefab;
+
+    public GameObject dropPrefab; // 드랍 프리팹
 }
 
