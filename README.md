@@ -23,6 +23,17 @@ https://github.com/user-attachments/assets/51c2ae48-1331-4655-b578-5dd53430ecac
 
 > 아이템 습득은 가능하지만(UI에 이미지 반영까지 됨) 아이템이 선택되지 않는 상황   
 > SelectItem() 메서드가 제대로 동작하지 않는 것으로 추정됨
+> 확인결과 Itemslot의 Button에 Onclick함수가 할당되지 않아 선택되지 않은 것이었음
+
+![image](https://github.com/user-attachments/assets/d63fa0a9-a1f7-4c55-a27c-2b8bed8bfe26)
+
+>  추가적인 문제: 이번에는 아이템의 할당값이 나타나지 않음(Heatlh, Stamina 등)   
+>  dropItem, UseItem 등은 버튼 할당이 되지 않은 것으로 추정됨   
+>  그러나 그것과는 별개로, 아이템에 Index가 할당되지 않은 것을 확인함.   
+![image](https://github.com/user-attachments/assets/25f6697a-f3d9-4ee4-9af6-83e3d6a2acae)
+>
+> 버튼도 할당되지 않은 모습을 확인할 수 있음.
+
 
 
 
