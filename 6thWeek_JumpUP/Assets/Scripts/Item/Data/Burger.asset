@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Burger
   m_EditorClassIdentifier: 
   displayName: "\uD584\uBC84\uAC70"
-  description: "\uC798 \uAD6C\uC6B4 \uD328\uD2F0\uAC00 \uB4E4\uC5B4\uAC04 \uD584\uBC84\uAC70."
+  description: "\uC798 \uAD6C\uC6B4 \uD328\uD2F0\uAC00 \uB4E4\uC5B4\uAC04 \uD504\uB80C\uCC28\uC774\uC988
+    \uD584\uBC84\uAC70."
   itemType: 2
   icon: {fileID: 21300000, guid: aace20b6b2ce68f4398ce70dff1b4917, type: 3}
   prefab: {fileID: 5987536644842773535, guid: 09eb74892c3c5cc42b954a18ec4c35dc, type: 3}

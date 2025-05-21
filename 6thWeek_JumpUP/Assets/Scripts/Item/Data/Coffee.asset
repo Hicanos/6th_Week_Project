@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Coffee
   m_EditorClassIdentifier: 
   displayName: "\uCEE4\uD53C"
-  description: "\uC7A0\uC744 \uAE68\uC6CC\uC8FC\uB294 \uCEE4\uD53C. \uBAB8\uC5D0
+  description: "\uC7A0\uC744 \uAE68\uC6CC\uC8FC\uB294 \uC74C\uB8CC. \uBAB8\uC5D0
     \uD65C\uB825\uC744 \uC900\uB2E4."
   itemType: 2
   icon: {fileID: 0}

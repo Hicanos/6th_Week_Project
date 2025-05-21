@@ -10,7 +10,7 @@ public class ItemObject : MonoBehaviour, IInteractable
     public ItemData data; //아이템 데이터
     public string GetInteractPrompt()
     {
-        string prompt = $"Press E to pick up {data.displayName}\n{data.description}"; //상호작용 프롬프트
+        string prompt = $"Press E to pick up\n{data.displayName}\n{data.description}"; //상호작용 프롬프트
         return prompt;
     }
 

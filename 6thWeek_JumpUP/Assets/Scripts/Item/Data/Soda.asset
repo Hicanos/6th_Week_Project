@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Soda
   m_EditorClassIdentifier: 
   displayName: "\uD0C4\uC0B0\uC74C\uB8CC"
-  description: "\uAC15\uD55C \uD0C4\uC0B0\uC744 \uD488\uC740 \uC624\uB80C\uC9C0 \uC18C\uB2E4"
+  description: "\uAC15\uD55C \uD0C4\uC0B0\uC774 \uC788\uB294 \uC624\uB80C\uC9C0\uB9DB
+    \uC18C\uB2E4."
   itemType: 2
   icon: {fileID: 21300000, guid: 64d7e04b0439e8a4eae705f7b265a530, type: 3}
   prefab: {fileID: 7009766549861851482, guid: 5408e4ebdef442545bc1e577d64e2a8a, type: 3}
