@@ -22,8 +22,8 @@
 https://github.com/user-attachments/assets/51c2ae48-1331-4655-b578-5dd53430ecac
 
 > 아이템 습득은 가능하지만(UI에 이미지 반영까지 됨) 아이템이 선택되지 않는 상황   
-> SelectItem() 메서드가 제대로 동작하지 않는 것으로 추정됨
-> 확인결과 Itemslot의 Button에 Onclick함수가 할당되지 않아 선택되지 않은 것이었음
+> SelectItem() 메서드가 제대로 동작하지 않는 것으로 추정됨   
+> >확인결과: Itemslot의 Button에 Onclick함수가 할당되지 않아 선택되지 않은 것이었음
 
 ![image](https://github.com/user-attachments/assets/d63fa0a9-a1f7-4c55-a27c-2b8bed8bfe26)
 
