@@ -25,15 +25,16 @@ public class ItemDataConsumable
 
     // 소비 아이템 회복증감량
     public float value;
-    // 소비 아이템 효과 지속시간
+    // 소비 아이템 효과 지속시간 (0이면 즉시 효과)
     public float duration;
 
-    // 소비 아이템 현재 쿨타임
-    public float curcooldown;
+    // 소비 아이템 쿨타임 여부
+    public bool isCooldown;    
     // 소비 아이템 지정 쿨타임(초)
     public float cooldownTime;
-    // 소비 아이템 쿨타임 여부
-    public bool isCooldown;
+    // 소비 아이템 현재 쿨타임
+    private float curcooldown;
+
 }
 
 [CreateAssetMenu(fileName = "Item", menuName = "New Item")]
@@ -50,7 +51,13 @@ public class ItemData : ScriptableObject
     public bool canStack; // 스택 가능 여부
     public int maxStackAmount; // 최대 스택 수
 
+ 
+    // 소비 아이템 데이터, itemType이 Consumable일 때만 사용    
     [Header("Consumable")]
-    public ItemDataConsumable consumableData; // 소비 아이템 데이터
+    public ItemDataConsumable consumableData;
+    // Consumable 타입 여부 확인
+    public bool IsConsumable => itemType == ItemType.Consumable;
+    //Consumable 타입일 때만 consumableData 사용
+    public ItemDataConsumable GetConsumableData() => IsConsumable ? consumableData : null;
 }
 
