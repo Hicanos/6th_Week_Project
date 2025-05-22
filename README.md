@@ -37,9 +37,9 @@ https://github.com/user-attachments/assets/51c2ae48-1331-4655-b578-5dd53430ecac
 >
 > 버튼도 할당되지 않은 모습을 확인할 수 있음.   
 > >확인 결과: 딱히 위의 내용은 문제될 것없는 내용으로, 실제 데이터로 들어가야할 Consumables에 데이터가 들어가지 않아 발생한 문제였다.   
-> >그에따라 consumableData로 명명된 부분은 private로 변경, Consumables에 다시 한 번 더 데이터를 삽입함
+> >그에따라 consumableData로 명명된 부분은 private로 변경, Consumables에 다시 한 번 더 데이터를 삽입함   
 
-![image](https://github.com/user-attachments/assets/7af410ea-c505-47f6-98fb-13a6188812c1)
+![image](https://github.com/user-attachments/assets/7af410ea-c505-47f6-98fb-13a6188812c1)   
 > 실제로 문제가 됐던 부분(데이터를 넣는 곳이 여기였다.)
 https://github.com/user-attachments/assets/adb7e768-cae2-4fe9-a060-b63ec47c31e1
 > 남은 문제: 아이템을 사용했을 때, 해당 아이템의 쿨타임만큼 코루틴으로 상호작용이 불가하도록 만들기
