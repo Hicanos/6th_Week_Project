@@ -13,14 +13,14 @@ public class ItemUIManager : MonoBehaviour
 
     private List<Weapon> allWeapons;
 
- 
+
     private Func<List<Weapon>, List<Weapon>> sortFunction;
 
     void Start()
     {
         allWeapons = WeaponDatabase.weapons;
 
-   
+
         sortFunction = weapons => weapons.OrderBy(w => w.Name).ToList();
 
         RefreshItemList();

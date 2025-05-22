@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17526035}
+  - component: {fileID: 17526036}
   m_Layer: 0
   m_Name: LinqTest
   m_TagString: Untagged
@@ -154,6 +155,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &17526036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17526034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e6dcb5edbe550549bf0e5f5b1c4b77b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &375476800 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2897789535592966712, guid: 4d330b076f2b75e42a3efb71e64813e5, type: 3}
