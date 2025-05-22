@@ -1463,6 +1463,7 @@ GameObject:
   m_Component:
   - component: {fileID: 313690617}
   - component: {fileID: 313690619}
+  - component: {fileID: 313690620}
   m_Layer: 6
   m_Name: EquipCamera
   m_TagString: Untagged
@@ -1521,7 +1522,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: 0
+  m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1536,6 +1537,20 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &313690620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313690616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28639013a97b221429e42741b2bbf41b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curEquip: {fileID: 0}
+  equipParent: {fileID: 313690617}
 --- !u!1 &351610874
 GameObject:
   m_ObjectHideFlags: 0
@@ -4206,6 +4221,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemSlot (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 9094060079933818041, guid: 8d1ff15d78b061849b90d2fab31dd1a5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5634,8 +5653,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1639728700}
-  - {fileID: 1133929901}
-  - {fileID: 1830460233}
   - {fileID: 1680567358}
   - {fileID: 370574295}
   - {fileID: 2099933447}
@@ -5647,6 +5664,8 @@ RectTransform:
   - {fileID: 1193632511}
   - {fileID: 994771137}
   - {fileID: 2137870356}
+  - {fileID: 1133929901}
+  - {fileID: 1830460233}
   m_Father: {fileID: 729807511}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
