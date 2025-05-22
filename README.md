@@ -40,7 +40,8 @@ https://github.com/user-attachments/assets/51c2ae48-1331-4655-b578-5dd53430ecac
 > >그에따라 consumableData로 명명된 부분은 private로 변경, Consumables에 다시 한 번 더 데이터를 삽입함   
 
 ![image](https://github.com/user-attachments/assets/7af410ea-c505-47f6-98fb-13a6188812c1)   
-> 실제로 문제가 됐던 부분(데이터를 넣는 곳이 여기였다.)
+> 실제로 문제가 됐던 부분(데이터를 넣는 곳이 여기였다.)   
+
 https://github.com/user-attachments/assets/adb7e768-cae2-4fe9-a060-b63ec47c31e1
 > 남은 문제: 아이템을 사용했을 때, 해당 아이템의 쿨타임만큼 코루틴으로 상호작용이 불가하도록 만들기
 
