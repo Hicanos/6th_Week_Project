@@ -44,6 +44,19 @@ https://github.com/user-attachments/assets/51c2ae48-1331-4655-b578-5dd53430ecac
 
 https://github.com/user-attachments/assets/adb7e768-cae2-4fe9-a060-b63ec47c31e1
 > 남은 문제: 아이템을 사용했을 때, 해당 아이템의 쿨타임만큼 코루틴으로 상호작용이 불가하도록 만들기
+>
+> 25.05.22 쿨타임 구현 완료
+> 
+
+https://github.com/user-attachments/assets/665484b5-ea7e-4294-a560-d9f7861bbb03
+
+https://github.com/user-attachments/assets/1e30ae3a-2eca-41b1-bb0d-b94174ae5ccd
+
+> 각각의 물건마다 서로 다른 쿨타임을 가지며, 쿨타임이 지속되는 동안에는 UseButton이 비활성화가 됨.   
+> 버렸다가 다시 주워도 쿨타임이 초기화 되지 않고 유지됨.
+
+
+
 
 
 
