@@ -16,7 +16,7 @@
 
   
 - 점프대 Rigidbody ForceMode (미완) - 구현 예정
-- 아이템 사용 Coroutine (미완) - 구현 예정
+- 아이템 사용 Coroutine (1/2) - 코루틴으로 쿨타임만 만들면 해결
 
 ## 트러블
 https://github.com/user-attachments/assets/51c2ae48-1331-4655-b578-5dd53430ecac
