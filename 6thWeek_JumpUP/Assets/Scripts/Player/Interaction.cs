@@ -44,8 +44,10 @@ public class Interaction : MonoBehaviour
                     SetPromptText();
                 }
             }
-            else
+            else 
             {
+                //상호작용 가능한 오브젝트가 없을 경우
+                //현재 상호작용중인 오브젝트를 null로 설정 - promptText 비활성화
                 curInteractGameObject = null;
                 curInteractable = null;
                 promptText.gameObject.SetActive(false);

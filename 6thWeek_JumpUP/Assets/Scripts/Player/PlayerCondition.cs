@@ -15,7 +15,7 @@ public class PlayerCondition : MonoBehaviour
 
 
 
-    //public event Action onTakeDamage; // 대미지 입었을 때 호출되는 이벤트
+    public event Action onTakeDamage; // 대미지 입었을 때 호출되는 이벤트
     public event Action onStaminaChange; // 스태미너 변화 시 호출되는 이벤트
     // 체력: 높은 곳에서 떨어졌을 때 소모됨 : 낙차계산 필요
     // 스태미나: 대쉬, 점프 등으로 소모됨
@@ -33,21 +33,6 @@ public class PlayerCondition : MonoBehaviour
             Die();
         }
     }
-
-    private void LateUpdate()
-    {
-        //if ()
-        //{
-        //    float fallDistance = lastYPosition - transform.position.y;
-        //    if (fallDistance > 5f) // 예시: 5미터 이상 낙하 시 대미지
-        //        health.Subtract(fallDistance * 2f);
-        //}
-        //else
-        //{
-        //    lastYPosition = transform.position.y;
-        //}
-    }
-
     public void Heal(float amount)
     {
         health.Add(amount);
@@ -56,11 +41,20 @@ public class PlayerCondition : MonoBehaviour
     public void RecoverStamina(float amount)
     {
         stamina.Add(amount);
+        onStaminaChange?.Invoke();
     }
 
     public void BeTired(float amount)
     {
         stamina.Subtract(amount);
+        onStaminaChange?.Invoke();
+    }
+
+    public void TakeDamage(float amount)
+    {
+        // 대미지 입었을 때 호출되는 이벤트
+        health.Subtract(amount);
+        onTakeDamage?.Invoke();
     }
 
     public void SpeedUP(float amount)

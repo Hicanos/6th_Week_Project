@@ -184,7 +184,7 @@ public class UIInventory : MonoBehaviour
 
         for (int i = 0; i < selectedItem.item.consumables.Length; i++)
         {
-            var consumable = selectedItem.item.consumables[i];
+            //var consumable = selectedItem.item.consumables[i];
             //UI에 표시되는 소모 아이템의 회복시키는 스탯의 종류와 수치
             selectedItemStatName.text += selectedItem.item.consumables[i].consumeType.ToString() + "\n";
             selectedItemStatValue.text += selectedItem.item.consumables[i].value.ToString() + "\n";
@@ -244,37 +244,37 @@ public class UIInventory : MonoBehaviour
         UpdateUI();
     }
 
-    //public void OnEquipButton()
-    //{
-    //    if (slots[curEquipIndex].equipped)
-    //    {
-    //        UnEquip(curEquipIndex);
-    //    }
+    public void OnEquipButton()
+    {
+        if (slots[curEquipIndex].equipped)
+        {
+            UnEquip(curEquipIndex);
+        }
 
-    //    slots[selectedItemIndex].equipped = true;
-    //    curEquipIndex = selectedItemIndex;
-    //    CharacterManager.Instance.Player.equip.EquipNew(selectedItem);
-    //    UpdateUI();
+        slots[selectedItemIndex].equipped = true;
+        curEquipIndex = selectedItemIndex;
+        CharacterManager.Instance.Player.equip.EquipNew(selectedItem.item);
+        UpdateUI();
 
-    //    SelectItem(selectedItemIndex);
-    //}
+        SelectItem(selectedItemIndex);
+    }
 
-    //void UnEquip(int index)
-    //{
-    //    slots[index].equipped = false;
-    //    CharacterManager.Instance.Player.equip.UnEquip();
-    //    UpdateUI();
+    void UnEquip(int index)
+    {
+        slots[index].equipped = false;
+        CharacterManager.Instance.Player.equip.UnEquip();
+        UpdateUI();
 
-    //    if (selectedItemIndex == index)
-    //    {
-    //        SelectItem(selectedItemIndex);
-    //    }
-    //}
+        if (selectedItemIndex == index)
+        {
+            SelectItem(selectedItemIndex);
+        }
+    }
 
-    //public void OnUpEquipButton()
-    //{
-    //    UnEquip(selectedItemIndex);
-    //}
+    public void OnUpEquipButton()
+    {
+        UnEquip(selectedItemIndex);
+    }
 
     public bool HasItem(ItemData item, int quantity)
     {

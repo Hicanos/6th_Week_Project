@@ -63,7 +63,7 @@ public class ItemData : ScriptableObject
  
     // 소비 아이템 데이터, itemType이 Consumable일 때만 사용    
     [Header("Consumable")]
-    public ItemDataConsumable consumableData;
+    private ItemDataConsumable consumableData;
     // Consumable 타입 여부 확인
     public bool IsConsumable => itemType == ItemType.Consumable;
     //Consumable 타입일 때만 consumableData 사용
