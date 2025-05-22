@@ -168,7 +168,6 @@ public class UIInventory : MonoBehaviour
     }
 
 
-    // ItemSlot 스크립트 먼저 수정
     public void SelectItem(int index)
     {
         if (slots[index].item == null) return;
@@ -190,7 +189,16 @@ public class UIInventory : MonoBehaviour
             selectedItemStatValue.text += selectedItem.item.consumables[i].value.ToString() + "\n";
         }
 
-        useButton.SetActive(selectedItem.item.itemType == ItemType.Consumable);
+        bool canUse = true;
+        foreach (var consumable in selectedItem.item.consumables)
+        {
+            if (consumable.isCooldown && !consumable.IsReady())
+            {
+                canUse = false;
+                break;
+            }
+        }
+        useButton.SetActive(selectedItem.item.itemType == ItemType.Consumable && canUse);
         equipButton.SetActive(selectedItem.item.itemType == ItemType.Equipable && !slots[index].equipped);
         unEquipButton.SetActive(selectedItem.item.itemType == ItemType.Equipable && slots[index].equipped);
         dropButton.SetActive(true);
@@ -200,23 +208,56 @@ public class UIInventory : MonoBehaviour
     {
         if (selectedItem.item.itemType == ItemType.Consumable)
         {
-            for (int i = 0; i < selectedItem.item.consumables.Length; i++)
+            foreach(var consumable in selectedItem.item.consumables)
             {
-                switch (selectedItem.item.consumables[i].consumeType)
+                if (consumable.isCooldown && !consumable.IsReady())
+                {
+                    Debug.Log("쿨타임이 남아있습니다.");
+                    return; // 쿨타임이 남아있으면 사용 불가
+                }
+                switch (consumable.consumeType)
                 {
                     case ConsumableType.Health:
-                        condition.Heal(selectedItem.item.consumables[i].value); break;
+                        condition.Heal(consumable.value); break;
                     case ConsumableType.Stamina:
-                        condition.RecoverStamina(selectedItem.item.consumables[i].value); break;
+                        condition.RecoverStamina(consumable.value); break;
                     case ConsumableType.Speed:
-                        //condition.SetSpeed(selectedItem.item.consumables[i].value); break;
+                        //condition.SetSpeed(consumable.value); break;
                         break;
                     case ConsumableType.JumpPower:
-                        //condition.SetJumpPower(selectedItem.item.consumables[i].value); break;
+                        //condition.SetJumpPower(consumable.value); break;
                         break;
                 }
+                if (consumable.isCooldown)
+                {
+                    consumable.ResetCooldown(); // 쿨타임 시작
+                    StartCoroutine(UseItemCooldown(consumable));
+                }
             }
+           
+            // foreach문으로 같은 내용을 변경
+            //for (int i = 0; i < selectedItem.item.consumables.Length; i++)
+            //{
+            //    switch (selectedItem.item.consumables[i].consumeType)
+            //    {
+            //        case ConsumableType.Health:
+            //            condition.Heal(selectedItem.item.consumables[i].value); break;
+            //        case ConsumableType.Stamina:
+            //            condition.RecoverStamina(selectedItem.item.consumables[i].value); break;
+            //        case ConsumableType.Speed:
+            //            //condition.SetSpeed(selectedItem.item.consumables[i].value); break;
+            //            break;
+            //        case ConsumableType.JumpPower:
+            //            //condition.SetJumpPower(selectedItem.item.consumables[i].value); break;
+            //            break;
+            //    }
+            //}
             RemoveSelectedItem();
+            UpdateUI();
+            SelectItem(selectedItemIndex);
+            //해당 아이템의 쿨타임이 종료되면 Usebutton을 다시 활성화
+            useButton.SetActive(false);
+
         }
     }
 
@@ -282,6 +323,13 @@ public class UIInventory : MonoBehaviour
     }
 
     //코루틴을 사용하여 쿨타임동안 아이템을 사용할수 없도록 처리
-
+    IEnumerator UseItemCooldown(ItemDataConsumable consumable)
+    {
+        while (!consumable.IsReady())
+        {
+            consumable.UpdateCooldown(Time.deltaTime);                        
+            yield return null;
+        }
+    }
 
 }
