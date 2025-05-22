@@ -280,4 +280,8 @@ public class UIInventory : MonoBehaviour
     {
         return false;
     }
+
+    //코루틴을 사용하여 쿨타임동안 아이템을 사용할수 없도록 처리
+
+
 }
