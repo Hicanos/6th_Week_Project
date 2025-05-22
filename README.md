@@ -15,10 +15,16 @@
 
 
   
-- 점프대 Rigidbody ForceMode (미완) - 구현 예정
-- 아이템 사용 Coroutine (완료)
+- 점프대 Rigidbody ForceMode (완료)
 
-## 🤯트러블
+
+https://github.com/user-attachments/assets/8be0c05f-a0e1-4809-9112-b53c82292f9b
+
+
+
+- 아이템 사용 Coroutine (완료) - Fix 중
+
+## 🤯트러블 슈팅
 https://github.com/user-attachments/assets/51c2ae48-1331-4655-b578-5dd53430ecac
 
 > 아이템 습득은 가능하지만(UI에 이미지 반영까지 됨) 아이템이 선택되지 않는 상황   
@@ -44,7 +50,7 @@ https://github.com/user-attachments/assets/51c2ae48-1331-4655-b578-5dd53430ecac
 
 https://github.com/user-attachments/assets/adb7e768-cae2-4fe9-a060-b63ec47c31e1
 > 남은 문제: 아이템을 사용했을 때, 해당 아이템의 쿨타임만큼 코루틴으로 상호작용이 불가하도록 만들기
->
+
 > 25.05.22 쿨타임 구현 완료
 > 
 
@@ -54,10 +60,18 @@ https://github.com/user-attachments/assets/1e30ae3a-2eca-41b1-bb0d-b94174ae5ccd
 
 > 각각의 물건마다 서로 다른 쿨타임을 가지며, 쿨타임이 지속되는 동안에는 UseButton이 비활성화가 됨.   
 > 버렸다가 다시 주워도 쿨타임이 초기화 되지 않고 유지됨.
+>
+
+### 추가적인 문제 발생
 
 
+https://github.com/user-attachments/assets/ff0b36a7-086e-4870-aa06-4913ff518890
 
-
+> 문제사항1: 쿨타임이 30초, 효과 지속시간이 20초인데 쿨타임이 먼저 종료됨 (쿨타임 종료 후 효과 지속시간의 코루틴이 작동하는 것 같음)   
+> 문제사항2: 1의 사유로 쿨타임이 끝난 아이템을 재사용하면, 효과가 중첩되며 가장 최초의 값으로 돌아가지 않음
+> (기본값 5, 추가량 5라면, 5>10>15의 순으로 증가 후 시간이 아무리 오래 지나도 10으로 고정됨.)
+> 1. 쿨타임 코루틴에 만약 duration이 있으면 같이 작동하도록 수정할 것
+> 2. 변경되는 값은 기존값을 그대로 두고, 아이템 회복량(초기값:0)에서 더하며 코루틴이 종료될 때 자신의 회복량(value)값을 제거할 것
 
 
 
