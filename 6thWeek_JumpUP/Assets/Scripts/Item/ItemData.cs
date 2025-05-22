@@ -35,7 +35,7 @@ public class ItemDataConsumable
     // 소비 아이템 현재 쿨타임
     private float curcooldown;
     public float CurCooldown => curcooldown; // 읽기 전용 프로퍼티
-    public void ResetCooldown() => curcooldown = cooldownTime; // 쿨타임 초기화
+    public void ResetCooldown() => curcooldown = cooldownTime; // 쿨타임이 완료되면, 초기화
     public void UpdateCooldown(float deltaTime) // 쿨타임 업데이트
     {
         if (curcooldown > 0)

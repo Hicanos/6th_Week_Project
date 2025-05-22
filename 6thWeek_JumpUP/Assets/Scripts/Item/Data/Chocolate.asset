@@ -21,12 +21,11 @@ MonoBehaviour:
   prefab: {fileID: 3365767448341484016, guid: 97b5ea74375d13d4ba4dba69e012ab8d, type: 3}
   canStack: 1
   maxStackAmount: 10
-  consumableData:
-    consumeType: 1
+  consumables:
+  - consumeType: 1
     value: 15
     duration: 0
     isCooldown: 1
     cooldownTime: 3
-  consumables: []
   equipPrefab: {fileID: 0}
   dropPrefab: {fileID: 3365767448341484016, guid: 97b5ea74375d13d4ba4dba69e012ab8d, type: 3}

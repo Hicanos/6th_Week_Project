@@ -16,6 +16,8 @@ public class ItemSlot : MonoBehaviour
     public bool equipped;
     public int quantity;
 
+    public Image coolDownImage; // 쿨타임 이미지
+
     private void Awake()
     {
         outline = GetComponent<Outline>();
