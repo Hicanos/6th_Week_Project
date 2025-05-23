@@ -18,13 +18,19 @@
 
   
 - 점프대 Rigidbody ForceMode (완료)
-
-
 https://github.com/user-attachments/assets/8be0c05f-a0e1-4809-9112-b53c82292f9b
 
 
 
 - 아이템 사용 Coroutine (완료)
+https://github.com/user-attachments/assets/56f66226-88d6-485c-abe6-62de5297989f
+
+
+- Dash 기능 추가
+
+https://github.com/user-attachments/assets/68237dc8-ade6-40dd-b093-06d9241af622
+
+
 
 ## 🤯트러블 슈팅
 https://github.com/user-attachments/assets/51c2ae48-1331-4655-b578-5dd53430ecac
