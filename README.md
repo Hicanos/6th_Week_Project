@@ -1,6 +1,6 @@
 # 🖥️ 6th_Week_Project
 ## 6주차 Unity 심화 개인 프로젝트
-## 개인 프로젝트 폴더: 6thWeek_JumpUP
+### 개인 프로젝트 폴더: 6thWeek_JumpUP
 
 
 ## 📖 필수 과제 구현 진행도
