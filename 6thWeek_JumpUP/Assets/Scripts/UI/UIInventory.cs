@@ -161,13 +161,13 @@ public class UIInventory : MonoBehaviour
         return null;
     }
 
-    // Player 스크립트 먼저 수정
+    // 아이템 버리기(버린 아이템을 드랍 위치에 생성)
     public void ThrowItem(ItemData data)
     {
         Instantiate(data.dropPrefab, dropPosition.position, Quaternion.Euler(Vector3.one * Random.value * 360));
     }
 
-
+    //아이템 선택
     public void SelectItem(int index)
     {
         if (slots[index].item == null) return;
@@ -175,10 +175,10 @@ public class UIInventory : MonoBehaviour
         selectedItem = slots[index];
         selectedItemIndex = index;
 
-        selectedItemName.text = selectedItem.item.displayName;
+        selectedItemName.text = selectedItem.item.displayName; // 선택된 아이템 이름
         selectedItemDescription.text = selectedItem.item.description;
 
-        selectedItemStatName.text = string.Empty;
+        selectedItemStatName.text = string.Empty; 
         selectedItemStatValue.text = string.Empty;
 
         for (int i = 0; i < selectedItem.item.consumables.Length; i++)
@@ -224,7 +224,6 @@ public class UIInventory : MonoBehaviour
             {
                 if (consumable.isCooldown && !consumable.IsReady())
                 {
-                    Debug.Log("쿨타임이 남아있습니다.");
                     return; // 쿨타임이 남아있으면 사용 불가
                 }
                 StartCoroutine(UseConsumableWithCooldown(consumable));
@@ -269,10 +268,6 @@ public class UIInventory : MonoBehaviour
 
         slots[selectedItemIndex].equipped = true;
         curEquipIndex = selectedItemIndex;
-        Debug.Log($"curEquipIndex: {curEquipIndex}, selectedItemIndex: {selectedItemIndex}");
-        Debug.Log($"slots: {slots != null}, slots[curEquipIndex]: {slots != null && curEquipIndex >= 0 && curEquipIndex < slots.Length && slots[curEquipIndex] != null}");
-        Debug.Log($"selectedItem: {selectedItem != null}");
-        Debug.Log($"CharacterManager.Instance.Player.equip: {CharacterManager.Instance.Player.equip != null}");
 
         CharacterManager.Instance.Player.equip.EquipNew(selectedItem.item);
         UpdateUI();
@@ -305,13 +300,6 @@ public class UIInventory : MonoBehaviour
     // 쿨타임이 끝나면 useButton을 다시 활성화하는 코루틴 (선택된 아이템이 동일할 때만)
     IEnumerator UseItemCooldownForSelection(ItemDataConsumable consumable, ItemSlot refSlot, int refIndex)
     {
-
-        //while (!consumable.IsReady())
-        //{
-        //    consumable.UpdateCooldown(Time.deltaTime);
-        //    yield return null;
-        //}
-
         yield return new WaitUntil(consumable.IsReady);
 
         // 쿨타임이 끝난 시점에 여전히 같은 아이템이 선택되어 있고, 아이템이 남아있으면 버튼 활성화

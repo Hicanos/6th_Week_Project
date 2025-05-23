@@ -65,7 +65,6 @@ public class PlayerController : MonoBehaviour
             {
                 //대쉬 종료 시 일반 속도로 이동
                 IsDash = false;
-                Debug.Log("스태미너 부족, 대쉬 끝");
             }
         }
     }
@@ -152,7 +151,6 @@ public class PlayerController : MonoBehaviour
         //stamina가 점프에 필요한 양보다 많을 때만 점프 가능
         if (condition.stamina.curValue < jumpStamina)
         {
-            Debug.Log("스태미너 부족");
             return;
         }
 
@@ -166,7 +164,6 @@ public class PlayerController : MonoBehaviour
             condition.BeTired(jumpStamina);
         }
         //점프 버튼을 눌렀을 때, IsGrounded()가 true이면 점프
-        else Debug.Log("점프 불가");
     }
 
     public void OnDash(InputAction.CallbackContext context)
@@ -181,22 +178,18 @@ public class PlayerController : MonoBehaviour
 
         if (condition.stamina.curValue < dashStamina)
         {
-            Debug.Log("스태미너 부족");
             return;
         }
 
         if (context.phase == InputActionPhase.Performed && IsGrounded() == true)
         {
             //대쉬 버튼을 누르고 있는 동안 대쉬 지속
-            Debug.Log("대쉬 시작");
             IsDash = true;
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
             IsDash =false; //대쉬 버튼을 떼면 대쉬 종료
         }
-        else Debug.Log("대쉬 불가");
-
 
     }
 
@@ -232,7 +225,6 @@ public class PlayerController : MonoBehaviour
             //groundLayerMask: 바닥 레이어 마스크(Raycast가 감지할 바닥 레이어)
             if (Physics.Raycast(rays[i], 0.6f, groundLayerMask))
             {
-                Debug.Log("바닥에 닿아있음");
                 return true;
             }
         }

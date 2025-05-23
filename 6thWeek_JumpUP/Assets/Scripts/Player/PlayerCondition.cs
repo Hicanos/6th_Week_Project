@@ -54,35 +54,12 @@ public class PlayerCondition : MonoBehaviour
         onTakeDamage?.Invoke();
     }
 
-    //public void SpeedUP(float amount)
-    //{
-    //    //스피드 증가, 효과가 끝나면 본래 속도로(코루틴)
-    //    //originSpeed가 0이면 원래 스피드 저장
-    //    // 0이 아닌데 moveSpeed와 값이 다르면 저장하지 않음
-    //    if(originSpeed == 0 || originSpeed != controller.moveSpeed)
-    //        originSpeed = controller.moveSpeed; // 원래 스피드 저장
-    //    else return; // 원래 스피드와 같으면 저장하지 않음
-    //    controller.moveSpeed += amount;
-    //}
-
     // 아이템 착용하고 있는 동안 계속 증가하는 상태
     // 장착 해제시 값을 제거함
     public void SpeedUP()
     {
 
     }
-
-
-    //public void JumpUP(float amount)
-    //{
-    //    //점프력 증가, 효과가 끝나면 본래 점프력으로(코루틴)
-    //    //originJumpPower가 0이면 원래 점프력 저장
-    //    // 0이 아닌데 jumpPower와 값이 다르면 저장하지 않음
-    //    if (originJumpPower == 0 || originJumpPower != controller.jumpPower)
-    //        originJumpPower = controller.jumpPower; // 원래 점프력 저장
-    //    else return; // 원래 점프력과 같으면 저장하지 않음
-    //    controller.jumpPower += amount;
-    //}
 
     public void JumpUP()
     {
