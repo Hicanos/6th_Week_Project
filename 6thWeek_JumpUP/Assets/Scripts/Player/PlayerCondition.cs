@@ -67,10 +67,11 @@ public class PlayerCondition : MonoBehaviour
     //    controller.moveSpeed += amount;
     //}
 
-    // duration 동안만 속도 증가
-    public void SpeedUP(float amount, float duration)
+    // 아이템 착용하고 있는 동안 계속 증가하는 상태
+    // 장착 해제시 값을 제거함
+    public void SpeedUP()
     {
-        StartCoroutine(ApplyBuffWithDuration(ConsumableType.Speed, amount, duration));
+
     }
 
 
@@ -85,10 +86,9 @@ public class PlayerCondition : MonoBehaviour
     //    controller.jumpPower += amount;
     //}
 
-    // duration 동안만 점프력 증가
-    public void JumpUP(float amount, float duration)
+    public void JumpUP()
     {
-        StartCoroutine(ApplyBuffWithDuration(ConsumableType.JumpPower, amount, duration));
+
     }
 
 
@@ -98,17 +98,17 @@ public class PlayerCondition : MonoBehaviour
         {
             case ConsumableType.Speed:
                     speed.curValue += value; //스피드 현재수치+아이템 value추가
-                uiCondition.speed.curValue += value;
+                controller.moveSpeed += value; //컨트롤러 스피드 현재수치+아이템 value추가
                 yield return new WaitForSeconds(duration);
                 speed.curValue -= value;
-                uiCondition.speed.curValue -= value;
+                controller.moveSpeed -= value; //컨트롤러 스피드 현재수치-아이템 value제거
                 break;
             case ConsumableType.JumpPower:
                     jumpPower.curValue += value;
-                uiCondition.jumpPower.curValue += value;
+                controller.jumpPower += value; //컨트롤러 점프력 현재수치+아이템 value추가
                 yield return new WaitForSeconds(duration);
                 jumpPower.curValue -= value;
-                uiCondition.jumpPower.curValue -= value;
+                controller.jumpPower -= value; //컨트롤러 점프력 현재수치-아이템 value제거
                 break;
         }
     }
