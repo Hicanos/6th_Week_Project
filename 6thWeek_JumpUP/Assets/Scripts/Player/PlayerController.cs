@@ -27,8 +27,10 @@ public class PlayerController : MonoBehaviour
 
     private bool isRightMouseDown = false; //오른쪽 마우스 버튼을 눌렀는지 확인하는 변수
     PlayerCondition condition; // 플레이어 상태를 저장하는 변수
-    private float itemSpeed; // 아이템 속도
-    private float itemJumpPower; // 아이템 점프력
+
+    [Header("ItemEffect")]
+    public float itemSpeed; // 아이템 속도
+    public float itemJumpPower; // 아이템 점프력
 
 
     private void Awake()

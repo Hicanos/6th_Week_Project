@@ -98,17 +98,17 @@ public class PlayerCondition : MonoBehaviour
         {
             case ConsumableType.Speed:
                     speed.curValue += value; //스피드 현재수치+아이템 value추가
-                controller.moveSpeed += value; //컨트롤러 스피드 현재수치+아이템 value추가
-                yield return new WaitForSeconds(duration);
+                controller.itemSpeed += value; //컨트롤러 스피드 현재수치+아이템 value추가 (실제 스피드 적용)
+                yield return new WaitForSeconds(duration); //효과 지속시간
                 speed.curValue -= value;
-                controller.moveSpeed -= value; //컨트롤러 스피드 현재수치-아이템 value제거
+                controller.itemSpeed -= value; //컨트롤러 스피드 현재수치-아이템 value제거
                 break;
             case ConsumableType.JumpPower:
                     jumpPower.curValue += value;
-                controller.jumpPower += value; //컨트롤러 점프력 현재수치+아이템 value추가
+                controller.itemJumpPower += value; //컨트롤러 점프력 현재수치+아이템 value추가
                 yield return new WaitForSeconds(duration);
                 jumpPower.curValue -= value;
-                controller.jumpPower -= value; //컨트롤러 점프력 현재수치-아이템 value제거
+                controller.itemJumpPower -= value; //컨트롤러 점프력 현재수치-아이템 value제거
                 break;
         }
     }

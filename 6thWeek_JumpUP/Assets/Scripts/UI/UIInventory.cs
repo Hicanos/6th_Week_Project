@@ -302,16 +302,6 @@ public class UIInventory : MonoBehaviour
         return false;
     }
 
-    //코루틴을 사용하여 쿨타임동안 아이템을 사용할수 없도록 처리
-    IEnumerator UseItemCooldown(ItemDataConsumable consumable)
-    {
-        while (!consumable.IsReady())
-        {
-            consumable.UpdateCooldown(Time.deltaTime);                        
-            yield return null;
-        }
-    }
-
     // 쿨타임이 끝나면 useButton을 다시 활성화하는 코루틴 (선택된 아이템이 동일할 때만)
     IEnumerator UseItemCooldownForSelection(ItemDataConsumable consumable, ItemSlot refSlot, int refIndex)
     {
@@ -327,9 +317,9 @@ public class UIInventory : MonoBehaviour
         {
             // 각 consumable이 쿨타임이 끝났는지 확인
             bool canUse = true;
-            foreach (var c in selectedItem.item.consumables)
+            foreach (var consume in selectedItem.item.consumables)
             {
-                if (c.isCooldown && !c.IsReady())
+                if (consume.isCooldown && !consume.IsReady())
                 {
                     canUse = false;
                     break;
@@ -346,15 +336,16 @@ public class UIInventory : MonoBehaviour
         switch (consumable.consumeType)
         {
             case ConsumableType.Health:
-                condition.Heal(consumable.value);
+                condition.Heal(consumable.value); // 체력회복-즉시적용
                 break;
             case ConsumableType.Stamina:
-                condition.RecoverStamina(consumable.value);
+                condition.RecoverStamina(consumable.value); // 스태미나 회복-즉시적용
                 break;
             case ConsumableType.Speed:
             case ConsumableType.JumpPower:
                 if (consumable.duration > 0f)
                     StartCoroutine(condition.ApplyBuffWithDuration(consumable.consumeType, consumable.value, consumable.duration));
+                // 스피드/점프력 증가-지속시간 적용
                 break;
         }
 
