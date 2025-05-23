@@ -12,8 +12,6 @@ public class PlayerCondition : MonoBehaviour
     public Condition speed { get { return uiCondition.speed; } }
     public Condition jumpPower { get { return uiCondition.jumpPower; } }
 
-    public float originSpeed; // 원래 스피드
-    public float originJumpPower; // 원래 점프력
     private float lastYPosition; // 마지막 Y좌표를 저장하는 변수
 
     public event Action onTakeDamage; // 대미지 입었을 때 호출되는 이벤트
