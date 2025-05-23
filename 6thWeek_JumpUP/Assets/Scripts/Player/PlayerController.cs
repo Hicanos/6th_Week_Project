@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
 
     private bool isRightMouseDown = false; //오른쪽 마우스 버튼을 눌렀는지 확인하는 변수
     PlayerCondition condition; // 플레이어 상태를 저장하는 변수
+    private float itemSpeed; // 아이템 속도
+    private float itemJumpPower; // 아이템 점프력
 
 
     private void Awake()
@@ -58,7 +60,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 dir = transform.forward * curMovementInput.y
                       + transform.right * curMovementInput.x;
-        dir *= moveSpeed;
+        dir *= (moveSpeed+ itemSpeed); //이동속도는 기본값 + 아이템 속도
         dir.y = rb.velocity.y;
         //점프를 했을 때만 위아래로 움직임. 즉, 그냥 움직일 때는 통상 상태 유지
 
@@ -126,12 +128,12 @@ public class PlayerController : MonoBehaviour
 
         if (context.phase == InputActionPhase.Started && IsGrounded()==true)
         {
-            rb.AddForce(Vector2.up * jumpPower, ForceMode.Impulse); //순간적으로 점프에 힘을 줌
-            Debug.Log("점프");
-            //점프하면 스태미너 소모
-            
+
+            //순간적으로 점프에 힘을 줌, jumpPower를 증가시키는 아이템을 먹으면 해당 값만큼 추가됨
+            rb.AddForce(Vector2.up * (jumpPower+itemJumpPower), ForceMode.Impulse);
+
+            //점프하면 스태미너 소모            
             condition.BeTired(jumpStamina);
-            //onStaminaChange?.Invoke(jumpStamina.curValue);
         }
         //점프 버튼을 눌렀을 때, IsGrounded()가 true이면 점프
         else Debug.Log("점프 불가");

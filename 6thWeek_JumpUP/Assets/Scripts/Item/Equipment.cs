@@ -18,7 +18,11 @@ public class Equipment : MonoBehaviour
 
     public void EquipNew(ItemData data)
     {
-        UnEquip();
+        //장비하고 있는 장비가 있다면 장비해제
+        if (curEquip != null)
+        {
+            UnEquip();
+        }
         curEquip = Instantiate(data.equipPrefab, equipParent).GetComponent<Equip>();
     }
 

@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
         controller = GetComponent<PlayerController>(); // 플레이어 컨트롤러를 가져옴
         condition = GetComponent<PlayerCondition>(); // 플레이어 상태를 가져옴
         equip = GetComponent<Equipment>(); // 플레이어 장비를 가져옴
+
     }
 
 }
