@@ -36,7 +36,6 @@ public class ItemSlot : MonoBehaviour
             {
                 if (consumable.isCooldown)
                 {
-                    consumable.UpdateCooldown(Time.deltaTime);
                     if (!consumable.IsReady())
                     {
                         anyCooldown = true;

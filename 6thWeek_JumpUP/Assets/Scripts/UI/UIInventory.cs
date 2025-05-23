@@ -306,11 +306,13 @@ public class UIInventory : MonoBehaviour
     IEnumerator UseItemCooldownForSelection(ItemDataConsumable consumable, ItemSlot refSlot, int refIndex)
     {
 
-        while (!consumable.IsReady())
-        {
-            consumable.UpdateCooldown(Time.deltaTime);
-            yield return null;
-        }
+        //while (!consumable.IsReady())
+        //{
+        //    consumable.UpdateCooldown(Time.deltaTime);
+        //    yield return null;
+        //}
+
+        yield return new WaitUntil(consumable.IsReady);
 
         // 쿨타임이 끝난 시점에 여전히 같은 아이템이 선택되어 있고, 아이템이 남아있으면 버튼 활성화
         if (selectedItem == refSlot && selectedItemIndex == refIndex && selectedItem != null && selectedItem.item != null)
