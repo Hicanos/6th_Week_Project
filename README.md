@@ -24,7 +24,7 @@ https://github.com/user-attachments/assets/8be0c05f-a0e1-4809-9112-b53c82292f9b
 
 
 
-- 아이템 사용 Coroutine (완료) - Fix 중
+- 아이템 사용 Coroutine (완료)
 
 ## 🤯트러블 슈팅
 https://github.com/user-attachments/assets/51c2ae48-1331-4655-b578-5dd53430ecac
