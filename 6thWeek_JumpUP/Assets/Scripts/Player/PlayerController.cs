@@ -6,11 +6,18 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed; // 움직이는 스피드
-    public float jumpPower; // 점프하는 힘
-    public float jumpStamina; // 점프하는 힘을 위한 스태미너
     private Vector2 curMovementInput; // 현재 움직이는 방향과 힘을 저장하는 변수
     private Rigidbody rb; // Rigidbody 컴포넌트를 저장
     public LayerMask groundLayerMask; // 바닥 레이어 마스크
+
+    [Header("Jump")]
+    public float jumpPower; // 점프하는 힘
+    public float jumpStamina; // 점프하는 힘을 위한 스태미너
+
+    [Header("Dash")]
+    public float dashPower; // 대쉬하는 힘
+    public float dashStamina; // 대쉬하는 힘을 위한 스태미너
+    private bool IsDash = false; // 대쉬 중인지 확인하는 변수
 
 
     [Header("Look")]
@@ -47,6 +54,20 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate() //물리 함수는 FixedUpdate에서 사용하는게 좋다
     {
         Move();
+
+        if (IsDash)
+        {
+            //대쉬 중일 때는 초당 dashStamina만큼 스태미너 소모
+            condition.BeTired(dashStamina * Time.fixedDeltaTime);
+
+
+            if (condition.stamina.curValue <= 0)
+            {
+                //대쉬 종료 시 일반 속도로 이동
+                IsDash = false;
+                Debug.Log("스태미너 부족, 대쉬 끝");
+            }
+        }
     }
 
     private void LateUpdate()
@@ -61,8 +82,15 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         Vector3 dir = transform.forward * curMovementInput.y
-                      + transform.right * curMovementInput.x;
-        dir *= (moveSpeed+ itemSpeed); //이동속도는 기본값 + 아이템 속도
+              + transform.right * curMovementInput.x;
+        if (IsDash == false)
+        {
+            dir *= (moveSpeed + itemSpeed); //이동속도는 기본값 + 아이템 속도
+        }
+        else if(IsDash == true) //대쉬 중일 때는 대쉬 속도 적용
+        {
+            dir *= (dashPower + itemSpeed);
+        }
         dir.y = rb.velocity.y;
         //점프를 했을 때만 위아래로 움직임. 즉, 그냥 움직일 때는 통상 상태 유지
 
@@ -139,6 +167,37 @@ public class PlayerController : MonoBehaviour
         }
         //점프 버튼을 눌렀을 때, IsGrounded()가 true이면 점프
         else Debug.Log("점프 불가");
+    }
+
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        //대쉬 버튼을 눌렀을 때, IsGrounded()가 true이면 대쉬
+        //대쉬는 버튼을 누르고 있는 동안 지속되며, 일정한 비율로 스태미너를 소모함 (대쉬 버튼을 떼면 대쉬 종료)
+        //소모되는 스태미너는 대쉬에 필요한 양보다 많을 때만 대쉬 가능 (maxStamina가 0이 될때까지 지속적으로 감소. 스태미너 최대일 때 총 10초동안 대쉬가능)
+        //대쉬는 Move처럼, transform.forward방향으로 이동하며 지속적으로 힘을 줌
+        //초당 감소하는 스태미너 계산 필요 (Lerp 0~1까지로 환원되어야함)
+
+        // 대쉬 버튼을 누름> IsDash=true, Move()에서 대쉬 속도 적용
+
+        if (condition.stamina.curValue < dashStamina)
+        {
+            Debug.Log("스태미너 부족");
+            return;
+        }
+
+        if (context.phase == InputActionPhase.Performed && IsGrounded() == true)
+        {
+            //대쉬 버튼을 누르고 있는 동안 대쉬 지속
+            Debug.Log("대쉬 시작");
+            IsDash = true;
+        }
+        else if (context.phase == InputActionPhase.Canceled)
+        {
+            IsDash =false; //대쉬 버튼을 떼면 대쉬 종료
+        }
+        else Debug.Log("대쉬 불가");
+
+
     }
 
     public bool IsGrounded() //true이면 바닥에 닿아있음, false면 바닥에 닿아있지 않음
