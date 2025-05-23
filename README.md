@@ -74,6 +74,13 @@ https://github.com/user-attachments/assets/ff0b36a7-086e-4870-aa06-4913ff518890
 > 2. 변경되는 값은 기존값을 그대로 두고, 아이템 회복량(초기값:0)에서 더하며 코루틴이 종료될 때 자신의 회복량(value)값을 제거할 것
 
 
+> 25.05.23 현재: 2는 해결됨(중첩 적용은 되지만, 각자 시간이 종료되면 아이템 효과가 제거됨)   
+> 그러나 여전히 1의 사항이 유지되고 있음.(쿨타임 종료 후 아이템 지속시간이 유지되고 사라짐...)
+> 
+https://github.com/user-attachments/assets/b11e9804-85d5-4ca9-8261-35edea9e6d88
+
+
+
 
 https://github.com/user-attachments/assets/284d4914-1294-4f73-b3ab-f7ff9efe79db
 
