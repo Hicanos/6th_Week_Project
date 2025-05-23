@@ -87,9 +87,9 @@ https://github.com/user-attachments/assets/b11e9804-85d5-4ca9-8261-35edea9e6d88
 https://github.com/user-attachments/assets/a206c5cd-e1fb-4ec0-9139-87845bdb0251
 
 #### 실제 문제: 쿨타임 감소함수가 3곳에서 동시에 호출됨
-> Time.deltaTime 이 3곳에서 동시에 감소시키자, 실제 감소량은 -Time.detlaTime*3이 되어, 쿨타임이 10초밖에 되지않은 것.
-> 불필요한 쿨다운함수는 제거, 쿨타임의 종료여부가 필요한 곳에는 IsReady()를 확인하는 것으로 해결함.
-> 실질적으로 쿨다운은 처음 아이템을 사용했을 때 1회만 작동하도록 만듦.
+> Time.deltaTime 이 3곳에서 동시에 감소시키자, 실제 감소량은 -Time.detlaTime*3이 되어, 쿨타임이 10초밖에 되지않은 것.   
+> 불필요한 쿨다운함수는 제거, 쿨타임의 종료여부가 필요한 곳에는 IsReady()를 확인하는 것으로 해결함.   
+> 실질적으로 쿨다운은 처음 아이템을 사용했을 때 1회만 작동하도록 만듦.   
 
 
 
